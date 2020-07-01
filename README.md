@@ -3,7 +3,7 @@
 
 ## Install
 ```BASH
-git clone https://github.com/Neotoxic-off/xdown
+git clone https://github.com/ai-enma/xdown
 cd xdown
 pip3 install -r requirements
 ```
