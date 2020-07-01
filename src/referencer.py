@@ -3,6 +3,7 @@
 import requests
 import sys
 import os
+from lib import status
 from src import video
 from src import extract
 
@@ -33,10 +34,13 @@ def clean(line):
 
 def resume_href(array):
     i = 0
+    previous = None
 
     while i < len(array):
         if array[i].startswith("/video") and __count__(array[i], '/') > 1:
-            extract.get("%s%s" % (settings.HOST, array[i]), settings.HREF)
+            if array[i] != previous:
+                extract.get("%s%s" % (settings.HOST, array[i]), settings.HREF)
+                previous = array[i]
         i += 1
 
 def parse_href(r):
@@ -69,7 +73,7 @@ def get(url, PATH):
     elif url.startswith("https://www.xnxx.com"):
         settings.HOST = "https://www.xnxx.com"
     else:
-        print("Can't do that with this website")
+        print("%s Can't do that with this website" % status.get("error"))
         exit(-1)
     connect()
     return (0)
