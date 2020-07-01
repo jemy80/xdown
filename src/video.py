@@ -17,7 +17,7 @@ def __slashes__(url):
 def download(video, url, PATH):
     crop = url.split('\n')[0]
     out = "%s.mp4" % crop.split('/')[__slashes__(crop)]
-    
+
     if url.startswith("https://www.xnxx.com/"):
         print("%s Domain:%s  XNXX%s" % (status.get("info"), color.get("blue", 1), color.get("reset")))
     elif url.startswith("https://www.xvideos.com/"):
